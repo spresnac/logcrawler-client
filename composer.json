@@ -1,0 +1,22 @@
+{
+    "name": "spresnac/logcrawler-client",
+    "description": "Client for send logs to logcrawler",
+    "keywords": ["php", "laravel", "logs", "logging"],
+    "type": "library",
+    "require": {
+      "php": "^7.1"
+    },
+    "autoload": {
+      "psr-4": {
+        "spresnac\\": "src/spresnac/"
+      }
+    },
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+      {
+        "name": "Sascha Presnac",
+        "email": "presnac@gmail.com"
+      }
+    ]
+  }
