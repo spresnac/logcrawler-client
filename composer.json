@@ -1,24 +1,40 @@
 {
-    "name": "spresnac/logcrawler-client",
-    "description": "Client for send logs to logcrawler",
-    "keywords": ["php", "laravel", "logs", "logging"],
-    "type": "library",
-    "require": {
-      "php": "^7.1",
-      "guzzlehttp/guzzle": "^6.3",
-        "illuminate/log": "^6.0"
-    },
-    "autoload": {
-      "psr-4": {
-        "spresnac\\": "src/spresnac/"
+  "name": "spresnac/logcrawler-client",
+  "description": "Client for send logs to logcrawler",
+  "keywords": [
+    "php",
+    "laravel",
+    "logs",
+    "logging"
+  ],
+  "type": "library",
+  "require": {
+    "php": "^7.1",
+    "guzzlehttp/guzzle": "^6.3",
+    "illuminate/log": "^6.0",
+    "illuminate/support": "^6.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "spresnac\\": "src/spresnac/"
+    }
+  },
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sascha Presnac",
+      "email": "presnac@gmail.com"
+    }
+  ],
+  "extra": {
+    "laravel": {
+      "providers": [
+        "spresnac\\logcrawlerclient\\Providers\\LogcrawlerClientServiceProvider"
+      ],
+      "aliases": {
+        "LogcrawlerClient": "spresnac\\logcrawlerclient\\Facades\\LogcrawlerClient"
       }
-    },
-    "minimum-stability": "stable",
-    "license": "MIT",
-    "authors": [
-      {
-        "name": "Sascha Presnac",
-        "email": "presnac@gmail.com"
-      }
-    ]
+    }
   }
+}
