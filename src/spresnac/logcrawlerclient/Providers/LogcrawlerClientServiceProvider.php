@@ -9,7 +9,9 @@ class LogcrawlerClientServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        
+        $this->publishes([
+            __DIR__.'/../config/logcrawler.php' => base_path('config/logcrawler.php'),
+        ], 'logcrawlerclient-config');
     }
 
     public function register()
@@ -17,5 +19,7 @@ class LogcrawlerClientServiceProvider extends ServiceProvider
         $this->app->bind('logcrawlerclient', function() {
             return new LogCrawler();
         });
+
+        $this->mergeConfigFrom(__DIR__.'/../config/logcrawler.php', 'logcrawler');
     }
 }
