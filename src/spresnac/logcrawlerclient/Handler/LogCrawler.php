@@ -2,7 +2,6 @@
 
 namespace spresnac\logcrawlerclient\Handler;
 
-use GuzzleHttp\Client;
 use Illuminate\Log\Logger;
 use Monolog\Handler\AbstractSyslogHandler;
 
