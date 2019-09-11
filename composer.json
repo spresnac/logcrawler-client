@@ -11,8 +11,8 @@
   "require": {
     "php": "^7.1",
     "guzzlehttp/guzzle": "^6.3",
-    "illuminate/log": "^6.0",
-    "illuminate/support": "^6.0"
+    "illuminate/log": "^5.8",
+    "illuminate/support": "^5.8"
   },
   "autoload": {
     "psr-4": {
