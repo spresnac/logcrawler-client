@@ -46,7 +46,7 @@ class LogCrawler extends AbstractSyslogHandler
                     'rfc' => $this->rfc,
                 ],
                 'record' => $record,
-            ]
+            ],
         ]);
     }
 }
