@@ -1,5 +1,7 @@
 # Laravel Logcrawler Client
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
+![PHP from Packagist](https://img.shields.io/packagist/php-v/spresnac/logcrawler-client.svg)
+![Downloads](https://img.shields.io/packagist/dt/spresnac/logcrawler-client.svg)
 
 ## Requirement
 You will need an account and a project on Logcrawler-Server to be able to use your logcrawler-key here 😉
