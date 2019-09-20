@@ -26,6 +26,8 @@ LOG_CRAWLER_KEY="place_your_key_here"
 ```
 
 After this, edit your `/config/logging` and append this at `channels`:
+
+Laravel up to 5.7 (including):
 ```php
 'channels' => [
     //...
@@ -34,6 +36,23 @@ After this, edit your `/config/logging` and append this at `channels`:
         'level' => 'debug',
         'handler' => LogCrawler::class,
         'handler_with' => [
+            'host' => config('logcrawler.url'),
+            'key' => config('logcrawler.key'),
+        ],
+    ],
+    //...
+],
+```
+
+Laravel 5.8+ and 6.x:
+```php
+'channels' => [
+    //...
+    'logcrawler' => [
+        'driver' => 'monolog',
+        'level' => 'debug',
+        'handler' => LogCrawler::class,
+        'with' => [
             'host' => config('logcrawler.url'),
             'key' => config('logcrawler.key'),
         ],
