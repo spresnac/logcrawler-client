@@ -2,7 +2,7 @@
 
 namespace spresnac\logcrawlerclient\Handler;
 
-use Illuminate\Log\Logger;
+use Monolog\Logger;
 use Monolog\Handler\AbstractSyslogHandler;
 
 class LogCrawler extends AbstractSyslogHandler
