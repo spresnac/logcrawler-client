@@ -10,12 +10,6 @@ class LogCrawler extends AbstractSyslogHandler
     /** @var CurlRequest */
     private $curlRequest;
 
-//    /** @var string */
-//    protected $host;
-
-    /** @var string */
-//    protected $key;
-
     /** @var int */
     protected $facility;
 
@@ -36,8 +30,6 @@ class LogCrawler extends AbstractSyslogHandler
 
     public function __construct(
         CurlRequest $curlRequest,
-//        string $host,
-//        $key = null,
         $facility = LOG_USER,
         $level = Logger::DEBUG,
         bool $bubble = true,
@@ -45,8 +37,6 @@ class LogCrawler extends AbstractSyslogHandler
         int $rfc = -1
     ) {
         parent::__construct($facility, $level, $bubble);
-//        $this->host = $host;
-//        $this->key = $key;
         $this->curlRequest = $curlRequest;
         $this->facility = $facility;
         $this->level = $level;
@@ -61,33 +51,9 @@ class LogCrawler extends AbstractSyslogHandler
         $this->curlRequest->postToApi($this->queue);
     }
 
-//    private function postToApi(array $data)
-//    {
-//        if (count($data) <= 0) {
-//            return;
-//        }
-//        if ($this->key === null) {
-//            return;
-//        }
-//        $data_encoded = json_encode($data);
-//        $curl_handle = curl_init($this->host . '/api/log');
-//        curl_setopt($curl_handle, CURLOPT_HTTPHEADER, [
-//            'Accept: application/json',
-//            'Content-Type: application/json',
-//            'x-lc-key: ' . $this->key,
-//        ]);
-//        curl_setopt($curl_handle, CURLOPT_USERAGENT, 'Laravel/Logcrawler');
-//        curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, true);
-//        curl_setopt($curl_handle, CURLOPT_TIMEOUT, 10);
-//        curl_setopt($curl_handle, CURLOPT_SSL_VERIFYPEER, true);
-//        curl_setopt($curl_handle, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
-//        curl_setopt($curl_handle, CURLOPT_ENCODING, '');
-//        curl_setopt($curl_handle, CURLINFO_HEADER_OUT, true);
-//        curl_setopt($curl_handle, CURLOPT_POST, true);
-//        curl_setopt($curl_handle, CURLOPT_POSTFIELDS, $data_encoded);
-//        curl_exec($curl_handle);
-//    }
-
+    /**
+     * @param array $record
+     */
     protected function write(array $record): void
     {
         $data = [

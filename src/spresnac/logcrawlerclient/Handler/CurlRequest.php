@@ -15,15 +15,18 @@ class CurlRequest
     private $host;
 
     /**
-     * @param string $key
-     * @param string $host
+     * @param $key
+     * @param $host
      */
-    public function __construct(string $key, string $host)
+    public function __construct($key, $host)
     {
         $this->key = $key;
         $this->host = $host;
     }
 
+    /**
+     * @param array $data
+     */
     public function postToApi(array $data)
     {
         if (count($data) <= 0) {
@@ -39,9 +42,9 @@ class CurlRequest
             'Content-Type: application/json',
             'x-lc-key: ' . $this->key,
         ]);
-        curl_setopt($curlHandle, CURLOPT_USERAGENT, 'Laravel/Logcrawler');
+        curl_setopt($curlHandle, CURLOPT_USERAGENT, self::CURL_USER_AGENT);
         curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curlHandle, CURLOPT_TIMEOUT, 10);
+        curl_setopt($curlHandle, CURLOPT_TIMEOUT, self::CURL_TIME_OUT);
         curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, true);
         curl_setopt($curlHandle, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
         curl_setopt($curlHandle, CURLOPT_ENCODING, '');
