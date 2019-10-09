@@ -4,10 +4,11 @@ namespace spresnac\logcrawlerclient\Handler;
 
 use Monolog\Logger;
 use Monolog\Handler\AbstractSyslogHandler;
+use spresnac\logcrawlerclient\Request\LogCrawlerCurlRequest;
 
 class LogCrawler extends AbstractSyslogHandler
 {
-    /** @var CurlRequest */
+    /** @var LogCrawlerCurlRequest */
     private $curlRequest;
 
     /** @var int */
@@ -29,7 +30,7 @@ class LogCrawler extends AbstractSyslogHandler
     private $queue = [];
 
     public function __construct(
-        CurlRequest $curlRequest,
+        LogCrawlerCurlRequest $curlRequest,
         $facility = LOG_USER,
         $level = Logger::DEBUG,
         bool $bubble = true,

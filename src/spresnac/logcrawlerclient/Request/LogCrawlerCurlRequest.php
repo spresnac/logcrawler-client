@@ -1,8 +1,8 @@
 <?php
 
-namespace spresnac\logcrawlerclient\Handler;
+namespace spresnac\logcrawlerclient\Request;
 
-class CurlRequest
+class LogCrawlerCurlRequest
 {
     const API_LOG_ROUTE = '/api/log';
     const CURL_TIME_OUT = 10;
