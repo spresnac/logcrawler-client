@@ -29,9 +29,6 @@ class LogCrawlerCurlRequest
      */
     public function postToApi(array $data)
     {
-        if (count($data) <= 0) {
-            return;
-        }
         if ($this->key === null) {
             return;
         }

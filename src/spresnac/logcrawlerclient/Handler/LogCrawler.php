@@ -31,9 +31,9 @@ class LogCrawler extends AbstractSyslogHandler
 
     public function __construct(
         LogCrawlerCurlRequest $curlRequest,
+        bool $bubble = true,
         $facility = LOG_USER,
         $level = Logger::DEBUG,
-        bool $bubble = true,
         string $ident = 'laravel',
         int $rfc = -1
     ) {
@@ -47,15 +47,10 @@ class LogCrawler extends AbstractSyslogHandler
         register_shutdown_function([$this, 'sendReports']);
     }
 
-    public function sendReports()
-    {
-        $this->curlRequest->postToApi($this->queue);
-    }
-
     /**
      * @param array $record
      */
-    protected function write(array $record): void
+    public function write(array $record): void
     {
         $data = [
             'params' => [
@@ -68,5 +63,17 @@ class LogCrawler extends AbstractSyslogHandler
             'record' => $record,
         ];
         $this->queue[] = $data;
+    }
+
+    /**
+     * send queue to api
+     */
+    public function sendReports()
+    {
+        if (count($this->queue) <= 0) {
+            return;
+        }
+
+        $this->curlRequest->postToApi($this->queue);
     }
 }
