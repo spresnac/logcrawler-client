@@ -5,7 +5,7 @@
 ![StyleCI](https://github.styleci.io/repos/207257104/shield)
 
 ## Requirement
-You will need an account and a project on Logcrawler-Server to be able to use your logcrawler-key here 😉
+You will need an account and a project on [Logcrawler Server](https://logcrawler.de "Logcrawler Server") to be able to use your logcrawler-key here 😉
 
 ## Installation
 First of all, require the package
