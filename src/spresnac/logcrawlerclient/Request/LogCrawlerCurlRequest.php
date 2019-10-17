@@ -2,6 +2,9 @@
 
 namespace spresnac\logcrawlerclient\Request;
 
+/**
+ * all necessary methods to send the request to logcrawler service
+ */
 class LogCrawlerCurlRequest
 {
     const API_LOG_ROUTE = '/api/log';

@@ -44,6 +44,32 @@ class LogCrawlerTest extends TestCase
         $this->instance->sendReports();
     }
 
+    public function testLogEntryPreparation()
+    {
+        $logRecord = [
+            'this' => 'is',
+            'a' => [
+                'test' => 'record'
+            ]
+        ];
+
+        $this->instance->write($logRecord);
+        $queue = $this->instance->getQueue();
+        $queue = $queue[0];
+        $this->assertArrayHasKey('params', $queue);
+        $this->assertIsArray($queue['params']);
+        $this->assertArrayHasKey('facility', $queue['params']);
+        $this->assertArrayHasKey('level', $queue['params']);
+        $this->assertArrayHasKey('bubble', $queue['params']);
+        $this->assertArrayHasKey('ident', $queue['params']);
+        $this->assertArrayHasKey('rfc', $queue['params']);
+        $this->assertArrayHasKey('record', $queue);
+        $this->assertArrayHasKey('this', $queue['record']);
+        $this->assertArrayHasKey('a', $queue['record']);
+        $this->assertIsArray($queue['record']['a']);
+        $this->assertArrayHasKey('test', $queue['record']['a']);
+    }
+
     public function testEmptyQueueWillNotBeSent()
     {
         $this->curlRequestMock->expects($this->never())->method('postToApi');

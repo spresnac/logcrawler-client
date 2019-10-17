@@ -48,21 +48,19 @@ class LogCrawler extends AbstractSyslogHandler
     }
 
     /**
+     * @return array
+     */
+    public function getQueue()
+    {
+        return $this->queue;
+    }
+
+    /**
      * @param array $record
      */
     public function write(array $record): void
     {
-        $data = [
-            'params' => [
-                'facility' => $this->facility,
-                'level'    => $this->level,
-                'bubble'   => $this->bubble,
-                'ident'    => $this->ident,
-                'rfc'      => $this->rfc,
-            ],
-            'record' => $record,
-        ];
-        $this->queue[] = $data;
+        $this->queue[] = $this->prepareLogEntry($record);
     }
 
     /**
@@ -75,5 +73,19 @@ class LogCrawler extends AbstractSyslogHandler
         }
 
         $this->curlRequest->postToApi($this->queue);
+    }
+
+    private function prepareLogEntry($record)
+    {
+        return [
+            'params' => [
+                'facility' => $this->facility,
+                'level'    => $this->level,
+                'bubble'   => $this->bubble,
+                'ident'    => $this->ident,
+                'rfc'      => $this->rfc,
+            ],
+            'record' => $record,
+        ];
     }
 }
