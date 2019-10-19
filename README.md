@@ -36,10 +36,8 @@ Laravel up to 5.7 (including):
         'level' => 'debug',
         'handler' => LogCrawler::class,
         'handler_with' => [
-            new LogCrawlerCurlRequest(
-                config('logcrawler.url'),
-                config('logcrawler.key')
-            )            
+            'host' => config('logcrawler.url'),
+            'key' => config('logcrawler.key'),
         ],
     ],
     //...
@@ -55,10 +53,8 @@ Laravel 5.8+ and 6.x:
         'level' => 'debug',
         'handler' => LogCrawler::class,
         'with' => [
-            new LogCrawlerCurlRequest(
-                config('logcrawler.url'),
-                config('logcrawler.key')
-            )
+            'host' => config('logcrawler.url'),
+            'key' => config('logcrawler.key'),
         ],
     ],
     //...
