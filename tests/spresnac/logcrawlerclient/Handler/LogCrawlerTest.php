@@ -1,8 +1,8 @@
 <?php
 
 use Monolog\Logger;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\MockObject\MockObject;
 use spresnac\logcrawlerclient\Handler\LogCrawler;
 use spresnac\logcrawlerclient\Request\LogCrawlerCurlRequest;
 
@@ -35,8 +35,8 @@ class LogCrawlerTest extends TestCase
         $logRecord = [
             'this' => 'is',
             'a' => [
-                'test' => 'record'
-            ]
+                'test' => 'record',
+            ],
         ];
 
         $this->instance->write($logRecord);
@@ -49,8 +49,8 @@ class LogCrawlerTest extends TestCase
         $logRecord = [
             'this' => 'is',
             'a' => [
-                'test' => 'record'
-            ]
+                'test' => 'record',
+            ],
         ];
 
         $this->instance->write($logRecord);

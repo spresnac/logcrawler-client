@@ -64,7 +64,7 @@ class LogCrawler extends AbstractSyslogHandler
     }
 
     /**
-     * send queue to api
+     * send queue to api.
      */
     public function sendReports()
     {
