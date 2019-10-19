@@ -3,7 +3,7 @@
 namespace spresnac\logcrawlerclient\Request;
 
 /**
- * all necessary methods to send the request to logcrawler service.
+ * all necessary methods to send the request to logcrawler service
  */
 class LogCrawlerCurlRequest
 {
@@ -36,11 +36,11 @@ class LogCrawlerCurlRequest
             return;
         }
         $dataEncoded = json_encode($data);
-        $curlHandle = curl_init($this->host.self::API_LOG_ROUTE);
+        $curlHandle = curl_init($this->host . self::API_LOG_ROUTE);
         curl_setopt($curlHandle, CURLOPT_HTTPHEADER, [
             'Accept: application/json',
             'Content-Type: application/json',
-            'x-lc-key: '.$this->key,
+            'x-lc-key: ' . $this->key,
         ]);
         curl_setopt($curlHandle, CURLOPT_USERAGENT, self::CURL_USER_AGENT);
         curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
