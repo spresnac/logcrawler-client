@@ -74,5 +74,11 @@ class LogCrawler extends AbstractSyslogHandler
             'record' => $record,
         ];
         $this->queue[] = $data;
+        if (config('logcrawler.force_threshold') > 0) {
+            if (count($this->queue) >= config('logcrawler.force_threshold')) {
+                $this->sendReports();
+                $this->queue = [];
+            }
+        }
     }
 }

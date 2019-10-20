@@ -72,5 +72,15 @@ Last thing, add the `logcrawler` channel to your selected channel, example:
 
 ## Finally
 Now, your logging to Logcrawler is enabled and you can watch your logs.
-
 Have fun 😎
+
+## Options
+### force_threshold
+By default, logcrawler sends it's logs when your php process exits and for default, that is preventing logcrawler from slowing down your app process.
+In some circumstances, you may wish to like "force sending" logs, i.e. when running in a queue. In this case, you can enable a threshold in your `.env` with
+```
+LOG_CRAWLER_THRESHOLD=<INT>
+``` 
+When not present or set to 0 (default), logcrawler only sends reports when your php exists.  
+All other integer values are your threshold for sending the logs!  
+Notice: A number too small can slow down your app!
