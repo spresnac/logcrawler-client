@@ -26,12 +26,13 @@ class LogCrawler extends AbstractSyslogHandler
         $this->bubble = $bubble;
         $this->ident = $ident;
         $this->rfc = $rfc;
-        register_shutdown_function([$this, 'sendReports']);
+        register_shutdown_function([&$this, 'sendReports']);
     }
 
     public function sendReports()
     {
         $this->postToApi($this->queue);
+        $this->queue = [];
     }
 
     private function postToApi(array $data)
@@ -74,11 +75,8 @@ class LogCrawler extends AbstractSyslogHandler
             'record' => $record,
         ];
         $this->queue[] = $data;
-        if (config('logcrawler.force_threshold') > 0) {
-            if (count($this->queue) >= config('logcrawler.force_threshold')) {
-                $this->sendReports();
-                $this->queue = [];
-            }
+        if (count($this->queue) >= config('logcrawler.force_threshold')) {
+            $this->sendReports();
         }
     }
 }
