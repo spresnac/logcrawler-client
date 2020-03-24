@@ -53,5 +53,15 @@
   },
   "require-dev": {
     "phpunit/phpunit": "^8"
-  }
+  },
+  "funding": [
+    {
+        "type": "other",
+        "url": "https://www.buymeacoffee.com/spresnac"
+    },
+    {
+      "type": "paypal",
+      "url": "https://www.paypal.me/paladin"
+    }  
+  ]
 }
