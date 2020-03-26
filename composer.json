@@ -62,6 +62,10 @@
     {
       "type": "paypal",
       "url": "https://www.paypal.me/paladin"
-    }  
+    },
+    {
+        "type": "github",
+        "url": "https://github.com/sponsors/spresnac"
+    }
   ]
 }
