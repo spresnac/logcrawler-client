@@ -18,7 +18,6 @@ class LogCrawler extends AbstractSyslogHandler
 
     public function __construct(string $host, $key = null, $facility = LOG_USER, $level = Logger::DEBUG, bool $bubble = true, string $ident = 'laravel', int $rfc = -1)
     {
-        parent::__construct($facility, $level, $bubble);
         $this->host = $host;
         $this->key = $key;
         $this->facility = $facility;
@@ -27,11 +26,13 @@ class LogCrawler extends AbstractSyslogHandler
         $this->ident = $ident;
         $this->rfc = $rfc;
         register_shutdown_function([$this, 'sendReports']);
+        parent::__construct($facility, $level, $bubble);
     }
 
     public function sendReports()
     {
         $this->postToApi($this->queue);
+        $this->queue = [];
     }
 
     private function postToApi(array $data)
@@ -74,11 +75,8 @@ class LogCrawler extends AbstractSyslogHandler
             'record' => $record,
         ];
         $this->queue[] = $data;
-        if (config('logcrawler.force_threshold') > 0) {
-            if (count($this->queue) >= config('logcrawler.force_threshold')) {
-                $this->sendReports();
-                $this->queue = [];
-            }
+        if (count($this->queue) >= config('logcrawler.force_threshold', 0)) {
+            $this->sendReports();
         }
     }
 }
