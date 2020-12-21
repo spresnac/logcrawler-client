@@ -45,7 +45,7 @@
     "source": "https://github.com/spresnac/logcrawler-client"
   },
   "scripts": {
-    "test-ci": "vendor/bin/phpunit --coverage-clover coverage.xml"
+    "test-ci": "vendor/bin/phpunit --coverage-clover=coverage.xml"
   },
   "funding": [
     {
