@@ -5,10 +5,10 @@
 ![StyleCI](https://github.styleci.io/repos/207257104/shield)
 
 ## Requirement
-You will need an account and a project on [Logcrawler Server](https://logcrawler.de "Logcrawler Server") to be able to use your logcrawler-key here 😉
+You will need a free account on [Logcrawler Server](https://logcrawler.de "Logcrawler Server") to be able to use your logcrawler-key here 😉
 
 ## Installation
-First of all, require the package
+First things first, require the package
 ```
 composer require spresnac/logcrawler-client
 ```
@@ -76,11 +76,11 @@ Have fun 😎
 
 ## Options
 ### force_threshold
-By default, logcrawler sends it's logs when your php process exits and for default, that is preventing logcrawler from slowing down your app process.
+By default, logcrawler sends its logs when your php process exits and for default, that is preventing logcrawler from slowing down your app process.
 In some circumstances, you may wish to like "force sending" logs, i.e. when running in a queue. In this case, you can enable a threshold in your `.env` with
 ```
 LOG_CRAWLER_THRESHOLD=<INT>
 ``` 
 When not present or set to 0 (default), logcrawler only sends reports when your php exists.  
 All other integer values are your threshold for sending the logs!  
-Notice: A number too small can slow down your app!
+Notice: A number too small can slow down your app - try to start with 8
