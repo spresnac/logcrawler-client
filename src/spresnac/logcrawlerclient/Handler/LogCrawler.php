@@ -38,12 +38,12 @@ class LogCrawler extends AbstractSyslogHandler
             return;
         }
         $data_encoded = json_encode($data);
-        $curl_handle = curl_init(config('logcrawler.url') . '/api/v2/log');
+        $curl_handle = curl_init(config('logcrawler.url').'/api/v2/log');
         curl_setopt($curl_handle, CURLOPT_HTTPHEADER, [
             'Accept:application/json',
             'Content-Type:application/json',
-            'x-lc-key:' . config('logcrawler.key'),
-            'Authorization:Bearer ' . config('logcrawler.bearer_token'),
+            'x-lc-key:'.config('logcrawler.key'),
+            'Authorization:Bearer '.config('logcrawler.bearer_token'),
             'Content-Length:'.mb_strlen($data_encoded),
             'Cache-Control:no-cache',
         ]);
@@ -64,6 +64,7 @@ class LogCrawler extends AbstractSyslogHandler
         curl_setopt($curl_handle, CURLOPT_POST, true);
         curl_setopt($curl_handle, CURLOPT_POSTFIELDS, $data_encoded);
         curl_setopt($curl_handle, CURLOPT_DEFAULT_PROTOCOL, 'https');
+
         return curl_exec($curl_handle);
     }
 
