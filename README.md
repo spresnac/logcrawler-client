@@ -81,6 +81,6 @@ In some circumstances, you may wish to like "force sending" logs, i.e. when runn
 ```
 LOG_CRAWLER_THRESHOLD=<INT>
 ``` 
-When not present or set to 0 (default), logcrawler only sends reports when your php exists.  
+When not present or set to 0 (default), logcrawler only sends reports when your php exits.  
 All other integer values are your threshold for sending the logs!  
-Notice: A number too small can slow down your app - try to start with 8
+Notice: A number too small can slow down your app - try to start with 4
