@@ -9,5 +9,7 @@ return [
     'force_threshold' => env('LOG_CRAWLER_THRESHOLD', 0),
     
     'bearer_token' => env('LOG_CRAWLER_BEARER_TOKEN'),
+    
+    'header_key' => env('LOGCRAWLER_HEADER_KEY'),
 
 ];
