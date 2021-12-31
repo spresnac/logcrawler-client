@@ -25,30 +25,30 @@ class Selfdiagnostic extends Command
         $this->info('... Selfdiagnostic end');
         $this->comment('-------------------------');
     }
-    
+
     protected function outputResult(string $text, bool $result): void
     {
         $this->line(
-            string: $text . ' ' . ($result ? '✔' : '❌'),
+            string: $text.' '.($result ? '✔' : '❌'),
             style: $result ? 'info' : 'error',
         );
     }
-    
+
     protected function checkEnvBearerKey(): bool
     {
         return env('LOG_CRAWLER_BEARER_TOKEN') !== null;
     }
-    
+
     protected function checkEnvProjectKey(): bool
     {
         return env('LOG_CRAWLER_KEY') !== null;
     }
-    
+
     protected function checkEnvServerUrl(): bool
     {
         return env('LOG_CRAWLER_URL') !== null;
     }
-    
+
     protected function checkEnvHeaderKey(): bool
     {
         return env('LOGCRAWLER_HEADER_KEY') !== null;

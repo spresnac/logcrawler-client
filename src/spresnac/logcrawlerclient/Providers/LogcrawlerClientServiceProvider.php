@@ -12,7 +12,7 @@ class LogcrawlerClientServiceProvider extends ServiceProvider
             __DIR__.'/../Config/logcrawler.php' => base_path('config/logcrawler.php'),
         ], 'logcrawlerclient-config');
         $this->publishes([
-            __DIR__.'/../Console/Commands/Selfdiagnostic.php' => base_path('app/Console/Commands/Selfdiagnostic.php')
+            __DIR__.'/../Console/Commands/Selfdiagnostic.php' => base_path('app/Console/Commands/Selfdiagnostic.php'),
         ], 'logcrawlerclient-commands');
     }
 
