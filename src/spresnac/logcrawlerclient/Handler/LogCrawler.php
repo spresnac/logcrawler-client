@@ -65,11 +65,12 @@ class LogCrawler extends AbstractSyslogHandler
         curl_setopt($curl_handle, CURLOPT_POSTFIELDS, $data_encoded);
         curl_setopt($curl_handle, CURLOPT_DEFAULT_PROTOCOL, 'https');
 
-        $result  = curl_exec($curl_handle);
+        $result = curl_exec($curl_handle);
         $this->handleResultInfo($curl_handle);
+
         return $result;
     }
-    
+
     protected function handleResultInfo($curl_handle)
     {
         $info = curl_getinfo($curl_handle);
