@@ -2,6 +2,7 @@
 
 namespace spresnac\logcrawlerclient\Providers;
 
+use App\Console\Commands\Selfdiagnostic;
 use Illuminate\Support\ServiceProvider;
 
 class LogcrawlerClientServiceProvider extends ServiceProvider
@@ -10,10 +11,13 @@ class LogcrawlerClientServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__.'/../Config/logcrawler.php' => base_path('config/logcrawler.php'),
-        ], 'logcrawlerclient-config');
-        $this->publishes([
-            __DIR__.'/../Console/Commands/Selfdiagnostic.php' => base_path('app/Console/Commands/Selfdiagnostic.php'),
-        ], 'logcrawlerclient-commands');
+        ]);
+        
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                Selfdiagnostic::class,
+            ]);
+        }
     }
 
     public function register()
