@@ -2,8 +2,8 @@
 
 namespace spresnac\logcrawlerclient\Providers;
 
-use App\Console\Commands\Selfdiagnostic;
 use Illuminate\Support\ServiceProvider;
+use spresnac\logcrawlerclient\Console\Commands\Selfdiagnostic;
 
 class LogcrawlerClientServiceProvider extends ServiceProvider
 {

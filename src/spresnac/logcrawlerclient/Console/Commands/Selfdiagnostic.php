@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace spresnac\logcrawlerclient\Console\Commands;
 
 use Illuminate\Console\Command;
 
