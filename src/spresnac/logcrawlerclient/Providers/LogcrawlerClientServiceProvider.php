@@ -12,7 +12,7 @@ class LogcrawlerClientServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../Config/logcrawler.php' => base_path('config/logcrawler.php'),
         ]);
-        
+
         if ($this->app->runningInConsole()) {
             $this->commands([
                 Selfdiagnostic::class,
