@@ -29,6 +29,7 @@ class LogcrawlerSendVersions extends Command
         if (config('info.send_laravel')) {
             $data['laravel'] = \Illuminate\Foundation\Application::VERSION;
         }
+
         return $this->send($data);
     }
 
