@@ -3,6 +3,7 @@
 namespace spresnac\logcrawlerclient\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use spresnac\logcrawlerclient\Console\Commands\LogcrawlerSendVersions;
 use spresnac\logcrawlerclient\Console\Commands\Selfdiagnostic;
 
 class LogcrawlerClientServiceProvider extends ServiceProvider
@@ -16,6 +17,7 @@ class LogcrawlerClientServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 Selfdiagnostic::class,
+                LogcrawlerSendVersions::class,
             ]);
         }
     }
