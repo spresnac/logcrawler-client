@@ -70,6 +70,20 @@ Last thing, add the `logcrawler` channel to your selected channel, example:
 ],
 ```
 
+## Sending PHP and laravel version to your server (v2.1.0+ client and server)
+To have an oversight of your installed version, logcrawler-client can send this information to your server. Both must have at least v2.1.0 or higher!
+
+By default, sending this information is set to `false`, you can set each option by itself in your `.env`:
+
+`LOGCRAWLER_INFO_PHP` => (bool, default false) Send PHP version to your server?
+
+
+`LOGCRAWLER_INFO_LARAVEL` => (bool, default false) Send laravel version to your server?
+
+Now, you can run the command or shedule it (once a week or so) as you like in your app.
+
+`php artisan logcrawler:client:sendversions`
+
 ## Finally
 Now, your logging to Logcrawler is enabled and you can watch your logs.
 Have fun 😎
