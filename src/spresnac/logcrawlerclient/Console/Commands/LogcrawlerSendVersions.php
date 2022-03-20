@@ -19,14 +19,14 @@ class LogcrawlerSendVersions extends Command
         if (config('logcrawler.key') === null) {
             return;
         }
-        if (config('info.send_php') === false && config('info.send_version') === false) {
+        if (config('logcrawler.info.send_php') === false && config('logcrawler.info.send_version') === false) {
             return;
         }
         $data = [];
-        if (config('info.send_php')) {
+        if (config('logcrawler.info.send_php')) {
             $data['php'] = phpversion();
         }
-        if (config('info.send_laravel')) {
+        if (config('logcrawler.info.send_laravel')) {
             $data['laravel'] = \Illuminate\Foundation\Application::VERSION;
         }
 
