@@ -3,17 +3,18 @@
 namespace spresnac\logcrawlerclient\Handler;
 
 use Monolog\Handler\AbstractSyslogHandler;
+use Monolog\Level;
 use Monolog\Logger;
 
 class LogCrawler extends AbstractSyslogHandler
 {
-    protected $facility;
-    protected $level;
-    protected $bubble;
+    protected int $facility;
+    protected \Monolog\Level $level;
+    protected bool $bubble;
     private array $queue = [];
     protected string $ident;
 
-    public function __construct($facility = LOG_USER, $level = Logger::DEBUG, bool $bubble = true, string $ident = 'laravel')
+    public function __construct($facility = LOG_USER, $level = Level::Debug, bool $bubble = true, string $ident = 'laravel')
     {
         $this->facility = $facility;
         $this->level = $level;
@@ -23,13 +24,13 @@ class LogCrawler extends AbstractSyslogHandler
         parent::__construct($facility, $level, $bubble);
     }
 
-    public function sendReports()
+    public function sendReports(): void
     {
         $this->postToApi($this->queue);
         $this->queue = [];
     }
 
-    private function postToApi(array $data)
+    private function postToApi(array $data): void
     {
         if (count($data) <= 0) {
             return;
@@ -68,10 +69,9 @@ class LogCrawler extends AbstractSyslogHandler
         $result = curl_exec($curl_handle);
         $this->handleResultInfo($curl_handle);
 
-        return $result;
     }
 
-    protected function handleResultInfo($curl_handle)
+    protected function handleResultInfo($curl_handle): void
     {
         $info = curl_getinfo($curl_handle);
         if ($info['http_code'] !== 201) {
@@ -80,7 +80,7 @@ class LogCrawler extends AbstractSyslogHandler
         }
     }
 
-    protected function write(array $record): void
+    protected function write(array|\Monolog\LogRecord $record): void
     {
         $data = [
             'params' => [

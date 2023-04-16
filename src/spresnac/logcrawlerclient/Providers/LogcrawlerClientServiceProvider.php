@@ -8,7 +8,7 @@ use spresnac\logcrawlerclient\Console\Commands\Selfdiagnostic;
 
 class LogcrawlerClientServiceProvider extends ServiceProvider
 {
-    public function boot()
+    public function boot(): void
     {
         $this->publishes([
             __DIR__.'/../Config/logcrawler.php' => base_path('config/logcrawler.php'),
@@ -22,7 +22,7 @@ class LogcrawlerClientServiceProvider extends ServiceProvider
         }
     }
 
-    public function register()
+    public function register(): void
     {
         $this->mergeConfigFrom(__DIR__.'/../Config/logcrawler.php', 'logcrawler');
     }
