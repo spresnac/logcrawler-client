@@ -1,6 +1,6 @@
 {
   "name": "spresnac/logcrawler-client",
-  "description": "Client for logcrawler.de",
+  "description": "Client for logcrawler.de for laravel up to 9.x",
   "keywords": [
     "php",
     "laravel",
@@ -12,12 +12,12 @@
     "php": "^8.0|^8.1|^8.2",
     "ext-curl": "*",
     "ext-json": "*",
-    "monolog/monolog": "^2|^3",
-    "illuminate/support": "^8|^9|^10",
-    "illuminate/console": "^8|^9|^10"
+    "monolog/monolog": "^2",
+    "illuminate/support": "^8|^9",
+    "illuminate/console": "^8|^9"
   },
   "require-dev": {
-    "phpunit/phpunit": "^9|^10",
+    "phpunit/phpunit": "^9",
     "symfony/var-dumper": "^4"
   },
   "autoload": {
