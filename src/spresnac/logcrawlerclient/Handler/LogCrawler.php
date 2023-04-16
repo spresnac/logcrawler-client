@@ -68,7 +68,6 @@ class LogCrawler extends AbstractSyslogHandler
 
         $result = curl_exec($curl_handle);
         $this->handleResultInfo($curl_handle);
-
     }
 
     protected function handleResultInfo($curl_handle): void
